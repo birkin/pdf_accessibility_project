@@ -1,0 +1,164 @@
+{
+  "directories": {
+    "ISO 32000-1": {
+      "description": "This directory contains a handful of test files for the base PDF 1.7 specification (ISO 32000-1). The naming pattern (e.g., 6-2-2-t01-fail-a) indicates the section and test case number. Each file deliberately breaks or exercises a specific provision of the PDF specification, such as the format of the cross\u2011reference table, object numbering or signature dictionaries. Because these files are meant for the PDF/A validator, none of them are fully conformant PDF/A documents; instead they expose edge cases for the underlying PDF specification.",
+      "files": {
+        "veraPDF test suite 6-2-2-t01-fail-a.pdf": "Exercises Section\u00a06.2.2 of ISO\u00a032000\u20111, which covers the document header and version. This file deliberately omits or mis\u2011formats the header so that a validator can detect the error.",
+        "veraPDF test suite 6-2-3-2-t01-fail-b.pdf": "Targets Section\u00a06.2.3.2 dealing with the ID entry in the trailer dictionary. The file is crafted with an invalid or missing ID array so that the validator reports a failure.",
+        "veraPDF test suite 6-8-2-2-t01-fail-d.pdf": "Exercises Section\u00a06.8.2.2 concerning digital signatures and signature dictionaries. This document includes a malformed signature dictionary or unsigned references, which should cause a validation failure.",
+        "veraPDF test suite 6-8-3-3-t01-fail-a.pdf": "Tests Section\u00a06.8.3.3 related to optional content properties. The file sets up optional content groups incorrectly (e.g., missing the OCProperties entry) so that the validator flags the problem.",
+        "veraPDF test suite 6-8-3-3-t01-fail-b.pdf": "Another variant of the Section\u00a06.8.3.3 test; it modifies a different aspect of optional content (for example, using a bad view state) to illustrate how diverse failure scenarios are handled."
+      }
+    },
+    "ISO 32000-2": {
+      "description": "Contains PDF\u00a02.0 (ISO\u00a032000\u20112) test cases. Compared with PDF\u00a01.7, PDF\u00a02.0 tightened many definitions. The lone file here targets the cross\u2011reference stream requirements in Section\u00a06.1.3 of PDF\u00a02.0.",
+      "files": {
+        "veraPDF test suite 6-1-3-t04-fail-b.pdf": "Crafted to violate Section\u00a06.1.3 of ISO\u00a032000\u20112, which defines the trailer and cross\u2011reference stream. This test uses an improper xref stream (e.g., missing fields or incorrect offsets) so the validator should fail it."
+      }
+    },
+    "PDF_A-1a": {
+      "description": "PDF/A\u20111a represents the most stringent profile of PDF/A 1. It requires that documents be fully tagged and that text be mapped to Unicode so they are accessible. The directory is subdivided into sections corresponding to the ISO\u00a019005\u20111 specification: fonts (6.3), metadata (6.7) and logical structure (6.8). Each subdirectory contains a mix of pass and fail files; pass files comply with the requirement, while fail files intentionally omit or misuse the feature under test.",
+      "files": {
+        "6.3 Fonts/6.3.8 Unicode character maps/\u2026": "Contains test PDFs exercising Section\u00a06.3.8. Each file checks whether a ToUnicode CMap is correctly attached to embedded fonts. Files labelled \u201cfail\u201d omit the CMap or contain an incorrect mapping, whereas \u201cpass\u201d files embed a proper ToUnicode map.",
+        "6.7 Metadata/\u2026": "Tests metadata requirements. Files ensure that XMP metadata is present and correctly formatted. Failing files either lack the RDF metadata packet or include invalid schema definitions.",
+        "6.8 Logical structure/\u2026": "Checks logical structure and tagging. PDF/A\u20111a requires that document content be tagged with structure elements (Heading, Paragraph, etc.) and that the tags map to Unicode. Failing files either lack tags, use incorrect role maps or omit the structure tree root. Passing files provide a complete tag hierarchy."
+      }
+    },
+    "PDF_A-1b": {
+      "description": "PDF/A\u20111b is the basic conformance level. It focuses on reliable visual reproduction but does not require tagged structure. The directory mirrors ISO\u00a019005\u20111 sections: file structure, graphics, fonts, transparency, annotations, actions, color spaces, and more. Each subfolder holds test documents that either conform (pass) or intentionally break (fail) the corresponding requirement\u2014for example, missing font embedding, prohibited transparency, or invalid annotation flags.",
+      "files": {
+        "6.1 File structure/\u2026": "Tests the file header, trailer, cross\u2011reference table and filters. Fail files omit headers, mis\u2011size xref tables or use forbidden filters.",
+        "6.2 Graphics/\u2026": "Focuses on graphics state, color spaces and images. Tests include use of prohibited encryption, external colour profiles or transparency (disallowed in PDF/A\u20111b).",
+        "6.3 Fonts/\u2026": "Verifies that all fonts are embedded and have proper encoding. Fail documents reference external fonts or embed fonts with missing glyph maps.",
+        "6.4 Transparency/\u2026": "Ensures that transparency operators are not used in PDF/A\u20111b. Any use of soft masks or blend modes triggers a failure.",
+        "6.5 Annotations/\u2026": "Checks allowed annotation types and flags. Disallowed popup or multimedia annotations cause a failure.",
+        "6.6 Actions/\u2026": "PDF/A prohibits actions that trigger external processes (e.g., launch URLs or run JavaScript). Files here demonstrate allowed and disallowed actions.",
+        "6.7 Metadata/\u2026": "Similar to PDF/A\u20111a but only requires presence of basic XMP metadata; tag structure is not mandatory.",
+        "6.8 Logical structure/\u2026": "While PDF/A\u20111b does not require tagging, this folder may contain tests ensuring that if tags are present they adhere to the spec (e.g., correct role maps)."
+      }
+    },
+    "PDF_A-2a": {
+      "description": "PDF/A\u20112 introduces new features from PDF\u00a01.7, including JPEG\u00a02000 images, transparency and layers. Profile\u00a02a retains the accessibility requirements of 1a (tagging and Unicode mapping) but allows the new features. Directories under PDF_A-2a mirror ISO\u00a019005\u20112 sections; files illustrate proper and improper use of layers, optional content, embedded files and ICC profiles.",
+      "files": {
+        "6.x sections/\u2026": "Each subfolder corresponds to a clause of ISO\u00a019005\u20112. Files labelled \u2018fail\u2019 illustrate violations such as missing alternate descriptions for layers, unembedded ICC profiles or misuse of object streams."
+      }
+    },
+    "PDF_A-2b": {
+      "description": "Profile\u00a02b relaxes tagging requirements and focuses on visual fidelity while adopting the new PDF 1.7 features permitted in PDF/A\u20112. Subdirectories test embedding of JPEG\u00a02000 images, transparency groups, layers, attachments and use of object streams.",
+      "files": {
+        "various sections/\u2026": "Each file either demonstrates correct usage (pass) or contains a deliberate error (fail) such as external ICC profiles, prohibited encryption or unmatched colour profiles."
+      }
+    },
+    "PDF_A-2u": {
+      "description": "PDF/A\u20112u (the \u2018u\u2019 stands for Unicode) sits between 2a and 2b. It requires that all text be mapped to Unicode but does not mandate tagging. Test files verify the presence of ToUnicode maps on all fonts while still allowing untagged content.",
+      "files": {
+        "various sections/\u2026": "Pass files embed proper ToUnicode CMaps; fail files omit them for one or more fonts."
+      }
+    },
+    "PDF_A-3b/6.8 Embedded files": {
+      "description": "PDF/A\u20113 extends the standard by allowing arbitrary file attachments. The subdirectory 6.8 Embedded files tests Section\u00a06.8 of ISO\u00a019005\u20113. Pass files attach permitted file types and provide AFRelationship metadata; fail files attach forbidden types or omit mandatory relationship keys.",
+      "files": {
+        "example fail/pass PDFs": "Documents illustrate proper and improper embedding of auxiliary files, such as including an XML invoice with correct AFRelationship or embedding an executable which is disallowed."
+      }
+    },
+    "PDF_A-4": {
+      "description": "PDF/A\u20114 aligns with ISO\u00a019005\u20114 (based on PDF\u00a02.0) and simplifies conformance levels to a single level. It allows modern features like rich media and 3D while still prohibiting encryption. The tests here verify compliance with the new requirements, such as updated metadata schemas and restrictions on JavaScript.",
+      "files": {
+        "various pass/fail PDFs": "Files demonstrate correct use of PDF\u00a02.0 features within PDF/A\u20114 as well as common violations (e.g., missing document status in the metadata or the presence of encryption)."
+      }
+    },
+    "PDF_A-4e": {
+      "description": "PDF/A\u20114e is tailored for engineering documents and allows the inclusion of PRC or U3D 3D models. Files in this directory test embedding of engineering data, ensuring that 3D content and measurement metadata comply with ISO\u00a019005\u20114e.",
+      "files": {
+        "various engineering test PDFs": "Failing files include unsupported 3D formats or omit required part metadata; passing files properly embed PRC models and specify units and scale."
+      }
+    },
+    "PDF_A-4f": {
+      "description": "PDF/A\u20114f is designed for prepress and publishing workflows and allows the embedding of PDF/A files or other packaging formats. Tests here ensure that only permitted embedded formats are used and that the parent and embedded documents share consistent metadata.",
+      "files": {
+        "various publishing test PDFs": "Fail files may embed unapproved file types or mismatched metadata; pass files follow the packaging rules."
+      }
+    },
+    "PDF_UA-1": {
+      "description": "PDF/UA\u20111 (ISO\u00a014289\u20111) defines requirements for universally accessible PDFs. It mandates a complete tag structure, alternate text for figures and proper reading order. The tests verify that documents meet or violate these accessibility requirements.",
+      "files": {
+        "assorted accessibility tests": "Files labelled \u2018fail\u2019 omit alt text, use incorrect heading levels or include non\u2011tagged annotations; pass files demonstrate proper tagging, logical order and alt descriptions."
+      }
+    },
+    "PDF_UA-2": {
+      "description": "PDF/UA\u20112 updates the accessibility standard for PDF\u00a02.0. The tests focus on new tagging constructs, enhanced role mapping and updated metadata.",
+      "files": {
+        "various UA2 test PDFs": "Fail documents misuse new tagging constructs or omit revised metadata; passing documents implement the updated accessibility model correctly."
+      }
+    },
+    "TWG test files": {
+      "description": "Contains miscellaneous test files contributed by the ISO working group and Technical Working Group (TWG). These files explore edge cases or emerging requirements not yet formalised.",
+      "files": {
+        "various TWG test PDFs": "Each file targets a specific edge case, such as unusual character encodings, exotic color spaces or rare annotation types."
+      }
+    },
+    "Undefined": {
+      "description": "This catch\u2011all directory holds test files that do not yet have a clearly assigned section in the PDF/A or PDF/UA standards. They may be experimental or awaiting specification.",
+      "files": {
+        "miscellaneous test PDFs": "Pass and fail files here illustrate unusual behaviours\u2014such as combining interactive forms with file attachments\u2014that the standards working group is still evaluating."
+      }
+    }
+  },
+  "index": {
+    "fonts": [
+      "PDF_A-1a/6.3 Fonts/6.3.8 Unicode character maps/...",
+      "PDF_A-1b/6.3 Fonts/..."
+    ],
+    "metadata": [
+      "PDF_A-1a/6.7 Metadata/...",
+      "PDF_A-1b/6.7 Metadata/...",
+      "PDF_A-4/..."
+    ],
+    "logical structure": [
+      "PDF_A-1a/6.8 Logical structure/...",
+      "PDF_A-1b/6.8 Logical structure/..."
+    ],
+    "file structure": [
+      "PDF_A-1b/6.1 File structure/..."
+    ],
+    "graphics": [
+      "PDF_A-1b/6.2 Graphics/..."
+    ],
+    "transparency": [
+      "PDF_A-1b/6.4 Transparency/...",
+      "PDF_A-2b/..."
+    ],
+    "annotations": [
+      "PDF_A-1b/6.5 Annotations/..."
+    ],
+    "actions": [
+      "PDF_A-1b/6.6 Actions/..."
+    ],
+    "embedded files": [
+      "PDF_A-3b/6.8 Embedded files/...",
+      "PDF_A-4f/..."
+    ],
+    "unicode character maps": [
+      "PDF_A-1a/6.3 Fonts/6.3.8 Unicode character maps/..."
+    ],
+    "accessibility": [
+      "PDF_A-1a/6.8 Logical structure/...",
+      "PDF_UA-1/...",
+      "PDF_UA-2/..."
+    ],
+    "engineering": [
+      "PDF_A-4e/..."
+    ],
+    "publishing": [
+      "PDF_A-4f/..."
+    ],
+    "miscellaneous": [
+      "TWG test files/...",
+      "Undefined/..."
+    ]
+  },
+  "meta": { 
+    "info": "produced by ChatGPT5-Thinking",
+    "date": "2025-09-03"
+}
+}
