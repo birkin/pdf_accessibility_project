@@ -1,0 +1,68 @@
+{
+  "profile": "PDF/UA-1 validation profile",
+  "compliant": false,
+  "statement": "PDF file is not compliant with Validation Profile requirements.",
+  "counts": {
+    "rules_passed": 101,
+    "rules_failed": 5,
+    "checks_passed": 95474,
+    "checks_failed": 244
+  },
+  "top_failed_rules": [
+    {
+      "clause": "7.1",
+      "test_number": 3,
+      "description": "Content shall be marked as Artifact or tagged as real content",
+      "failed_checks": 159,
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "clause": "7.18.5",
+      "test_number": 2,
+      "description": "Links shall contain an alternate description via their Contents key as described in ISO 32000-1:2008, 14.9.3",
+      "failed_checks": 36,
+      "tags": [
+        "annotation",
+        "alt-text",
+        "structure"
+      ]
+    },
+    {
+      "clause": "7.18.1",
+      "test_number": 2,
+      "description": "An annotation (except Widget annotations or hidden annotations, or those having rectangle outside the crop-box) shall have either Contents key or an Alt entry in the enclosing structure element",
+      "failed_checks": 36,
+      "tags": [
+        "annotation",
+        "alt-text"
+      ]
+    },
+    {
+      "clause": "7.3",
+      "test_number": 1,
+      "description": "Figure tags shall include an alternative representation or replacement text that represents the contents marked with the Figure tag as noted in ISO 32000-1:2008, 14.7.2, Table 323",
+      "failed_checks": 12,
+      "tags": [
+        "figure",
+        "alt-text",
+        "structure"
+      ]
+    },
+    {
+      "clause": "7.1",
+      "test_number": 8,
+      "description": "The Catalog dictionary of a conforming file shall contain the Metadata key whose value is a metadata stream as defined in ISO 32000-1:2008, 14.3.2. The metadata stream dictionary shall contain entry Type with value /Metadata and entry Subtype with value /XML",
+      "failed_checks": 1,
+      "tags": [
+        "metadata"
+      ]
+    }
+  ],
+  "focus_accessibility": true,
+  "hints": [
+    "Add /StructTreeRoot and tag meaningful content; mark decorative items as Artifacts.",
+    "Embed XMP metadata stream (dc:title etc.)."
+  ]
+}

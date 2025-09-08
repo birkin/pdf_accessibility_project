@@ -27,7 +27,7 @@ To experiment with using veraPDF, and maybe other tools, to check PDF accessibil
         - produces huge `sample_output/output_20250908_094754.json`
 - how to evaluate the results
     - a start: `b__reduce_verapdf_json.py`, to reduce the huge json to a more comprehensible summary
-        - usage: `uv run ./b__reduce_verapdf_json.py --input /path/to/your_verapdf.json --output /path/to/vera_reduced.json`
+        - usage: `uv run "./b__reduce_verapdf_json.py" --input "../sample_output/output_20250908_094754.json" --output "../sample_output/vera_reduced.json"`
 - questions
     - do we want to eventually have "handlers" to auto-address certain issues?
     - do we want binary pass/fail results, or return a list of issues, or something else?
