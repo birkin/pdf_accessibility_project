@@ -23,11 +23,11 @@ To experiment with using veraPDF, and maybe other tools, to check PDF accessibil
 - √ how to run it from the command line
     - see [initial test usage](#initial-test-usage)
 - √ how to call it from a python script
-    - usage: `uv run --env-file "../.env" ./code_try_01.py --pdf-path "../sample_pdfs/HH012060_1146.pdf"`
+    - usage: `uv run --env-file "../.env" ./a__run_verapdf.py --pdf-path "../sample_pdfs/HH012060_1146.pdf"`
         - produces huge `sample_output/output_20250908_094754.json`
 - how to evaluate the results
-    - a start: `reduce_verapdf_json.py`, to reduce the huge json to a more comprehensible summary
-        - usage: `uv run ./reduce_verapdf_json.py --input /path/to/your_verapdf.json --output /path/to/vera_reduced.json`
+    - a start: `b__reduce_verapdf_json.py`, to reduce the huge json to a more comprehensible summary
+        - usage: `uv run ./b__reduce_verapdf_json.py --input /path/to/your_verapdf.json --output /path/to/vera_reduced.json`
 - questions
     - do we want to eventually have "handlers" to auto-address certain issues?
     - do we want binary pass/fail results, or return a list of issues, or something else?
