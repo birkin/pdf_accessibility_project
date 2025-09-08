@@ -1,23 +1,30 @@
 """
-Script to be run on the huge veraPDF JSON output to reduce it to a more comprehensible summary.
+Script to reduce the huge veraPDF JSON output to a more comprehensible summary.
+
+Usage:
+
+## default: accessibility-focused, top 15
+uv run ./reduce_verapdf_json.py /path/to/your_verapdf.json -o /path/to/vera_reduced.json
+
+## include all failed rules (not just accessibility)
+uv run ./reduce_verapdf_json.py /path/to/your_verapdf.json --all-rules
+
+## show only top 5 failed rules
+uv run ./reduce_verapdf_json.py /path/to/your_verapdf.json --top 5
 
 The original veraPDF json output was produced by this command:
 ```
     command: list[str] = [
         str(verapdf_cli_path),
-        '-f',
-        'ua1',
-        '--maxfailuresdisplayed',
-        '999999',
-        '--format',
-        'json',
+        '-f', 'ua1',
+        '--maxfailuresdisplayed', '999999',
+        '--format', 'json',
         '--success',
         str(pdf_path),
     ]
 ```
 """
 
-## reduce verapdf json to accessibility-focused summary
 import argparse
 import json
 from pathlib import Path
