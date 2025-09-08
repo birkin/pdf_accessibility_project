@@ -13,7 +13,7 @@ on this page...
 
 ## goal
 
-To experiment with using veraPDF, and maybe other tools, to check PDF accessibility.
+To explore using veraPDF to check PDF accessibility.
 
 
 ## work
