@@ -3,7 +3,7 @@ Experimenting based on:
 <https://github.com/docaxess/verapdf-report-generator-cli/blob/0d1495e37e8a853b0d63ae75109240c6a59572d8/app/pdf_checker/service/verapdf_checker.py#L10-L29>
 
 Usage:
-$ uv run --env-file "../.env" ./code_try_01.py --pdf-path "../sample_pdfs/HH012060_1146.pdf"
+$ uv run --env-file "../.env" ./a__run_verapdf.py --pdf-path "../sample_pdfs/HH012060_1146.pdf"
 """
 
 import argparse
