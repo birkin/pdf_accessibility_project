@@ -89,4 +89,6 @@ verapdf %
     - [some indication][some-info] of what's being tested from one of the readme's test-suite references.
         - only lists tests for PDFA, not PDFUA.
 
+- https://github.com/docaxess/verapdf-report-generator-cli
+
 [some-info]: <https://github.com/bfocom/pdfa-testsuite/blob/master/description.txt>
