@@ -1,0 +1,75 @@
+{
+  "profile": "PDF/UA-1 validation profile",
+  "compliant": false,
+  "statement": "PDF file is not compliant with Validation Profile requirements.",
+  "counts": {
+    "rules_passed": 100,
+    "rules_failed": 6,
+    "checks_passed": 294,
+    "checks_failed": 689
+  },
+  "top_failed_rules": [
+    {
+      "clause": "7.1",
+      "test_number": 3,
+      "description": "Content shall be marked as Artifact or tagged as real content",
+      "failed_checks": 343,
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "clause": "7.2",
+      "test_number": 34,
+      "description": "Natural language for text in page content shall be determined",
+      "failed_checks": 342,
+      "tags": [
+        "text",
+        "lang"
+      ]
+    },
+    {
+      "clause": "7.1",
+      "test_number": 8,
+      "description": "The Catalog dictionary of a conforming file shall contain the Metadata key whose value is a metadata stream as defined in ISO 32000-1:2008, 14.3.2. The metadata stream dictionary shall contain entry Type with value /Metadata and entry Subtype with value /XML",
+      "failed_checks": 1,
+      "tags": [
+        "metadata"
+      ]
+    },
+    {
+      "clause": "7.1",
+      "test_number": 10,
+      "description": "The document catalog dictionary shall include a ViewerPreferences dictionary containing a DisplayDocTitle key, whose value shall be true",
+      "failed_checks": 1,
+      "tags": [
+        "syntax"
+      ]
+    },
+    {
+      "clause": "7.1",
+      "test_number": 11,
+      "description": "The logical structure of the conforming file shall be described by a structure hierarchy rooted in the StructTreeRoot entry of the document catalog dictionary, as described in ISO 32000-1:2008, 14.7",
+      "failed_checks": 1,
+      "tags": [
+        "structure"
+      ]
+    },
+    {
+      "clause": "6.2",
+      "test_number": 1,
+      "description": "The document catalog dictionary shall include a MarkInfo dictionary containing an entry, Marked, whose value shall be true",
+      "failed_checks": 1,
+      "tags": [
+        "syntax"
+      ]
+    }
+  ],
+  "focus_accessibility": true,
+  "hints": [
+    "Set Catalog /Lang (e.g., en-US) and/or per-structure Lang.",
+    "Add /StructTreeRoot and tag meaningful content; mark decorative items as Artifacts.",
+    "Set /ViewerPreferences/DisplayDocTitle = true.",
+    "Embed XMP metadata stream (dc:title etc.)."
+  ]
+}
