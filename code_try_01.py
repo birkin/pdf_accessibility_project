@@ -6,6 +6,7 @@ Experimenting based on:
 import argparse
 import os
 import subprocess
+from datetime import datetime
 from pathlib import Path
 
 ## load constants ---------------------------------------------------
@@ -68,7 +69,9 @@ def main():
         text=True,
     )
     output = str(completed_process.stdout)
-    output_path = output_dir / pdf_path.name
+    ## create a datetime string for the filename
+    datetime_str = datetime.now().strftime('%Y%m%d_%H%M%S')
+    output_path = output_dir / f'output_{datetime_str}.json'
     output_path.write_text(output, encoding='utf-8')
     print(output)
 
