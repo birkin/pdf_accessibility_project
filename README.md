@@ -18,16 +18,18 @@ To experiment with using veraPDF, and maybe other tools, to check PDF accessibil
 
 ## work
 
-- √ how to install veraPDF
+- √ determine how to install veraPDF
     - see [installation](#installation)
-- √ how to run it from the command line
+- √ determine how to run it from the command line
     - see [initial test usage](#initial-test-usage)
-- √ how to call it from a python script
+- √ determine how to call it from a python script
     - usage: `uv run --env-file "../.env" ./a__run_verapdf.py --pdf-path "../sample_pdfs/HH012060_1146.pdf"`
         - produces huge `sample_output/output_20250908_094754.json`
-- how to evaluate the results
+        - updated the code to remove the `--success` flag, which significantly reduces the output size
+- determine how to evaluate the results
     - a start: `b__reduce_verapdf_json.py`, to reduce the huge json to a more comprehensible summary
         - usage: `uv run "./b__reduce_verapdf_json.py" --input "../sample_output/output_20250908_094754.json" --output "../sample_output/vera_reduced.json"`
+        - this produces a _much_ smaller assessment file; example: [before with success](https://github.com/birkin/pdf_accessibility_project/blob/main/sample_output/output_20250908_141314_thesis.json) and [after](https://github.com/birkin/pdf_accessibility_project/blob/main/sample_output/output_20250908_141314_thesis_reduced.json)
 - questions
     - do we want to eventually have "handlers" to auto-address certain issues?
     - do we want binary pass/fail results, or return a list of issues, or something else?

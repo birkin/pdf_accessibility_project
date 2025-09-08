@@ -58,7 +58,7 @@ def main():
     -f ua1 (PDF/UA-1 validation profile)
     --maxfailuresdisplayed 999999 (show all failures)
     --format json (output format)
-    --success (include success messages)
+    --success (include success messages) -- disabled to reduce the size of the output
     str(pdf_path) (path to pdf)
     """
     ## handle args --------------------------------------------------
@@ -72,7 +72,7 @@ def main():
         '999999',
         '--format',
         'json',
-        '--success',
+        # '--success',  ## removing this significantly reduces the output
         str(pdf_path),
     ]
     ## run command --------------------------------------------------
