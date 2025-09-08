@@ -155,7 +155,7 @@ def reduce_verapdf(data: dict, focus_accessibility: bool = True, top_n: int = 15
 
 def main():
     ap = argparse.ArgumentParser(description='reduce veraPDF JSON to a targeted summary')
-    ap.add_argument('input', help='path to veraPDF JSON')
+    ap.add_argument('-i', '--input', required=True, help='path to veraPDF JSON')
     ap.add_argument('-o', '--output', help='path to write reduced JSON', default='vera_reduced.json')
     ap.add_argument('--all-rules', action='store_true', help='do not filter to accessibility-centric rules')
     ap.add_argument('--top', type=int, default=15, help='number of top failed rules to include')
