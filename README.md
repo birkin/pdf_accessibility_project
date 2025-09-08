@@ -26,13 +26,22 @@ To experiment with using veraPDF, and maybe other tools, to check PDF accessibil
     - usage: `uv run --env-file "../.env" ./a__run_verapdf.py --pdf-path "../sample_pdfs/HH012060_1146.pdf"`
         - produces huge `sample_output/output_20250908_094754.json`
         - updated the code to remove the `--success` flag, which significantly reduces the output size
-- determine how to evaluate the results
+- determine how to evaluate the results -- __I'm here.__
     - a start: `b__reduce_verapdf_json.py`, to reduce the huge json to a more comprehensible summary
         - usage: `uv run "./b__reduce_verapdf_json.py" --input "../sample_output/output_20250908_094754.json" --output "../sample_output/vera_reduced.json"`
-        - this produces a _much_ smaller assessment file; example: [before with success](https://github.com/birkin/pdf_accessibility_project/blob/main/sample_output/output_20250908_141314_thesis.json) and [after](https://github.com/birkin/pdf_accessibility_project/blob/main/sample_output/output_20250908_141314_thesis_reduced.json)
-- questions
-    - do we want to eventually have "handlers" to auto-address certain issues?
-    - do we want binary pass/fail results, or return a list of issues, or something else?
+        - this produces a _much_ smaller assessment file; example: [before with success](https://github.com/birkin/pdf_accessibility_project/blob/main/sample_output/output_20250908_141314_thesis.json) and [before without success](https://github.com/birkin/pdf_accessibility_project/blob/main/sample_output/output_20250908_143720_theses_no_success.json) and [after](https://github.com/birkin/pdf_accessibility_project/blob/main/sample_output/output_20250908_141314_thesis_reduced.json)
+        - note that the new raw output, showing only the failures, lists the page-numbers of the problems.
+        - initial assessment: 
+            - it's disturbing how many problems the thesis PDF has -- though it is 40 pages, and many checks may apply to small sections.
+            - it _may_ be possible to script updates to a PDF to address some issues. The [partially-patched](https://github.com/birkin/pdf_accessibility_project/blob/main/sample_pdfs/HH012060_1146_partially_patched_experimentation.pdf) thesis (not yet tested), is an example of running a patch-script.
+            - __Relationship between rules and checks:__ 
+                - Rules are from ISO specifications. Each has a description, clause-number, test-number, and tags that apply (eg lang, structure, alt-text). 
+                - Checks are applications of that rule to a given document. Some rules apply to the document as a whole, some apply to specific elements of the document. An example regarding the latter: Say the PDF contains 100 links. There is a rule that states a link should have an accessible text equivalent. If none of the links do, then there will be 100 check-failures for that rule.
+    - next steps? see following questions/todos.
+- questions/todos...
+    - there may be many other ways to run verapdf; are there other flags that'd be useful?
+    - I _think_ it'd be useful to gain a sense of the relative _priority_ of failures.
+    - I'm really trying to stay focused on "detection/assessment" for now, but we should probably explore possibilities to auto-address certain issues.
 
 
 ## installation
@@ -112,4 +121,3 @@ verapdf %
 
 [some-info]: <https://github.com/bfocom/pdfa-testsuite/blob/master/description.txt>
 [brief-overview]: <https://github.com/birkin/pdf_accessibility_project/blob/main/VeraPDF_Corpus_Summary.md>
-
