@@ -2,17 +2,31 @@
 
 on this page...
 - [goal](#goal)
+- [work](#work)
 - [installation](#installation)
+- [initial test usage](#initial-test-usage)
+- [usage resources](#usage-resources)
+- [other resources](#other-resources)
+
+---
 
 
 ## goal
 
 To experiment with using veraPDF, and maybe other tools, to check PDF accessibility.
 
-To be determined:
-- how to set up veraPDF
-- how to call it from a python script
+
+## work
+
+- √ how to install veraPDF
+    - see [installation](#installation)
+- √ how to run it from the command line
+    - see [initial test usage](#initial-test-usage)
+- √ how to call it from a python script
+    - `uv run --env-file "../.env" ./code_try_01.py --pdf-path "../sample_pdfs/HH012060_1146.pdf"`
+        - produces huge `sample_output/output_20250908_094754.json`
 - how to evaluate the results
+- questions
     - do we want to eventually have "handlers" to auto-address certain issues?
     - do we want binary pass/fail results, or return a list of issues, or something else?
 
@@ -21,11 +35,11 @@ To be determined:
 
 Installing veraPDF on my mac...
 
-- from https://verapdf.org/software/ clicked the [veraPDF for Mac link][mac-link]
+- from https://verapdf.org/software/ clicked the [veraPDF for Mac link][mac-link] -- (all the links seem to resolve to the same installer zip)
 - clicked through the various steps, installing the optional components.
 - by default, it installed to `/Users/me/verapdf`
 
-[mac-link]: https://github.com/verapdf/verapdf-app/releases/download/verapdf-1.10.1/verapdf-1.10.1-mac.dmg
+[mac-link]: https://software.verapdf.org/rel/verapdf-installer.zip
 
 
 

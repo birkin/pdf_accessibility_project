@@ -1,6 +1,9 @@
 """
 Experimenting based on:
 <https://github.com/docaxess/verapdf-report-generator-cli/blob/0d1495e37e8a853b0d63ae75109240c6a59572d8/app/pdf_checker/service/verapdf_checker.py#L10-L29>
+
+Usage:
+$ uv run --env-file "../.env" ./code_try_01.py --pdf-path "../sample_pdfs/HH012060_1146.pdf"
 """
 
 import argparse
@@ -9,26 +12,20 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
-## load constants ---------------------------------------------------
-try:
-    VERAPDF_CLI_PATH: str = os.environ['VERAPDF_CLI_PATH']
-except KeyError:
-    raise ValueError('VERAPDF_CLI_PATH environment variable must be set')
-
-try:
-    OUTPUT_DIR: str = os.environ['OUTPUT_DIR']
-except KeyError:
-    raise ValueError('OUTPUT_DIR environment variable must be set')
+## load constants from .env -----------------------------------------
+VERAPDF_CLI_PATH: str = os.environ['VERAPDF_CLI_PATH']
+OUTPUT_DIR: str = os.environ['OUTPUT_DIR']
 
 verapdf_cli_path = Path(VERAPDF_CLI_PATH).expanduser().resolve()
 output_dir = Path(OUTPUT_DIR).expanduser().resolve()
 output_dir.mkdir(parents=True, exist_ok=True)
 
 
-def parse_and_validate_pdf_path() -> Path:
-    """Parse CLI args and validate --pdf-path using pathlib.
-
+def parse_and_validate_pdf_arg() -> Path:
+    """
+    Parses --pdf-path arg and validates using pathlib.
     Returns a resolved Path to an existing .pdf file. Exits with a message if invalid.
+    Called by main().
     """
     parser = argparse.ArgumentParser(description='Run veraPDF on a given PDF file.')
     parser.add_argument(
@@ -49,8 +46,24 @@ def parse_and_validate_pdf_path() -> Path:
     return pdf_path
 
 
+## manager function -------------------------------------------------
+
+
 def main():
-    pdf_path = parse_and_validate_pdf_path()
+    """
+    Manages script flow.
+    Called by dundermain.
+
+    Command flags:
+    -f ua1 (PDF/UA-1 validation profile)
+    --maxfailuresdisplayed 999999 (show all failures)
+    --format json (output format)
+    --success (include success messages)
+    str(pdf_path) (path to pdf)
+    """
+    ## handle args --------------------------------------------------
+    pdf_path: Path = parse_and_validate_pdf_arg()
+    ## build command ------------------------------------------------
     command: list[str] = [
         str(verapdf_cli_path),
         '-f',
@@ -62,6 +75,7 @@ def main():
         '--success',
         str(pdf_path),
     ]
+    ## run command --------------------------------------------------
     completed_process = subprocess.run(
         command,
         cwd='.',
@@ -69,10 +83,11 @@ def main():
         text=True,
     )
     output = str(completed_process.stdout)
-    ## create a datetime string for the filename
+    ## save output file ---------------------------------------------
     datetime_str = datetime.now().strftime('%Y%m%d_%H%M%S')
     output_path = output_dir / f'output_{datetime_str}.json'
     output_path.write_text(output, encoding='utf-8')
+    ## print output -------------------------------------------------
     print(output)
 
 
