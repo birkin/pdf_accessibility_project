@@ -39,6 +39,7 @@ To experiment with using veraPDF, and maybe other tools, to check PDF accessibil
                 - Checks are applications of that rule to a given document. Some rules apply to the document as a whole, some apply to specific elements of the document. An example regarding the latter: Say the PDF contains 100 links. There is a rule that states a link should have an accessible text equivalent. If none of the links do, then there will be 100 check-failures for that rule.
     - next steps? see following questions/todos.
 - questions/todos...
+    - should we put a web-wrapper around this? Would allow brown-community-all folk to test their PDFs.    
     - there may be many other ways to run verapdf; are there other flags that'd be useful?
     - I _think_ it'd be useful to gain a sense of the relative _priority_ of failures.
     - I'm really trying to stay focused on "detection/assessment" for now, but we should probably explore possibilities to auto-address certain issues.
