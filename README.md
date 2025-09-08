@@ -88,7 +88,10 @@ verapdf %
     - note that `PDFA` refers to archival pdfs; `PDFUA` refers to accessibility pdfs.
     - [some indication][some-info] of what's being tested from one of the readme's test-suite references.
         - only lists tests for PDFA, not PDFUA.
+    - [gpt brief overview of corpus files][brief-overview]
 
 - https://github.com/docaxess/verapdf-report-generator-cli
 
 [some-info]: <https://github.com/bfocom/pdfa-testsuite/blob/master/description.txt>
+[brief-overview]: <https://github.com/birkin/pdf_accessibility_project/blob/main/VeraPDF_Corpus_Summary.md>
+

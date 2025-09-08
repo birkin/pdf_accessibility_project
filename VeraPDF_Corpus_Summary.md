@@ -1,7 +1,7 @@
 # VeraPDF Corpus Summary
 
-- __Source JSON__: `pdf_accessibility_project/VeraPDF Corpus Summary.json`
-- __Generated__: 2025-09-08
+- __Source JSON__: `pdf_accessibility_project/VeraPDF_Corpus_Summary.json`
+- __Generated__: 2025-09-08, by GPt-5 (low-reasoning) in Windsurf
 
 ## Overview
 This document summarizes the VeraPDF test corpus, organized by standards and profiles (e.g., ISO 32000, PDF/A, PDF/UA). Each directory contains targeted pass/fail PDFs designed to exercise specific clauses of the corresponding standards.
