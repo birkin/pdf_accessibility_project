@@ -4,13 +4,13 @@ Script to reduce the huge veraPDF JSON output to a more comprehensible summary.
 Usage:
 
 ## default: accessibility-focused, top 15
-uv run ./reduce_verapdf_json.py --input /path/to/your_verapdf.json --output /path/to/vera_reduced.json
+uv run ./b__reduce_verapdf_json.py --input /path/to/your_verapdf.json --output /path/to/vera_reduced.json
 
 ## include all failed rules (not just accessibility)
-uv run ./reduce_verapdf_json.py --input /path/to/your_verapdf.json --all-rules
+uv run ./b__reduce_verapdf_json.py --input /path/to/your_verapdf.json --all-rules
 
 ## show only top 5 failed rules
-uv run ./reduce_verapdf_json.py --input /path/to/your_verapdf.json --top 5
+uv run ./b__reduce_verapdf_json.py --input /path/to/your_verapdf.json --top 5
 
 The original veraPDF json output was produced by this command:
 ```
